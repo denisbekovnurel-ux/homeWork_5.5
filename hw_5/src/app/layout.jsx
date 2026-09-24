@@ -3,7 +3,7 @@ import { Header } from '../components/header.jsx'
 
 export function Layout() {
     return (
-        <div className='max-w-[1200px] mx-auto'>
+        <div className='max-w-[1200px] mx-auto px-4'>
             <Header />
             <main>
                 <Outlet />
