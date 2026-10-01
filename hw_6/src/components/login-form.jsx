@@ -1,29 +1,33 @@
-import { Link } from 'react-router-dom'
-import { useState } from 'react'
-import { useLoginMutation } from '../store/auth-store.js'
-import { AuthTabs } from './auth-tabs.jsx'
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useLoginMutation } from "../store/auth-store.js";
+import { AuthTabs } from "./auth-tabs.jsx";
 
 export function LoginForm() {
-  const [loginOrEmail, setLoginOrEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [loginOrEmail, setLoginOrEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const { mutate, isPending } = useLoginMutation()
+  const { mutate, isPending } = useLoginMutation();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     mutate({
       loginOrEmail,
       password,
-    })
-  }
+    });
+  };
 
   return (
     <div className="rounded-[28px] border border-[#dfe9e2] bg-white p-6 shadow-[0_20px_50px_rgba(22,52,41,0.08)] sm:p-8">
       <div className="mb-6 flex items-center justify-between gap-3 border-b border-[#edf2ee] pb-4">
         <div>
-          <p className="text-sm font-medium tracking-[0.2em] text-[#6b7a75]">Вход</p>
-          <h2 className="mt-2 text-3xl font-bold text-[#1d2321]">Добро пожаловать</h2>
+          <p className="text-sm font-medium tracking-[0.2em] text-[#6b7a75]">
+            Вход
+          </p>
+          <h2 className="mt-2 text-3xl font-bold text-[#1d2321]">
+            Добро пожаловать
+          </h2>
         </div>
         <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#eaf7f2] text-2xl text-[#0d8b67]">
           ◈
@@ -82,12 +86,12 @@ export function LoginForm() {
           disabled={isPending}
           className="w-full rounded-2xl bg-[#0d8b67] px-4 py-3 text-base font-semibold text-white transition hover:bg-[#0b7153] disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {isPending ? 'Входим...' : 'Войти'}
+          {isPending ? "Входим..." : "Войти"}
         </button>
       </form>
 
       <p className="mt-6 text-center text-sm text-[#6b7a75]">
-        Нет аккаунта?{' '}
+        Нет аккаунта?{" "}
         <Link
           to="/auth?step=register"
           className="font-semibold text-[#0d8b67] hover:text-[#0b7153]"
@@ -96,5 +100,5 @@ export function LoginForm() {
         </Link>
       </p>
     </div>
-  )
+  );
 }
